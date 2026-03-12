@@ -1,18 +1,3 @@
-# robot_ui.py
-# -*- coding: utf-8 -*-
-"""
-Robot UI (single-file, GitHub-ready)
-
-Требования выполнены:
-- заглушки zaglushka_* с time.sleep(1)
-- UI не зависает (QThreadPool)
-- кнопки блокируются на время выполнения команды
-
-Запуск:
-  pip install PySide6 numpy matplotlib
-  python robot_ui.py
-"""
-
 from __future__ import annotations
 
 import os
@@ -633,8 +618,6 @@ class ErosionTab(QWidget):
         self.erosion.bus.started.connect(lambda: self.pause_btn.setEnabled(True))
         self.erosion.bus.finished.connect(lambda: self.pause_btn.setEnabled(False))
 
-        # simple log pump (UI timer-less): on every action we also try to drain queue
-        # (на практике можно сделать QTimer, но здесь достаточно)
         self._drain_logs()
 
     def _drain_logs(self):
@@ -879,3 +862,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
